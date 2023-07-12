@@ -5,7 +5,7 @@ import { smtpValidationSchema } from "@/lib/yup-validations";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-const Page = () => {
+const Page = async () => {
   const {
     register,
     handleSubmit,

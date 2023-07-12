@@ -1,3 +1,4 @@
+"use client";
 import {
   ChevronUp,
   LineChart,
@@ -33,14 +34,6 @@ const Sidebar = () => {
           >
             <LineChart className="h-5 w-5 opacity-75" stroke="currentColor" />
             <span className="text-sm font-medium"> Dashboard </span>
-          </Link>
-
-          <Link
-            href="/signals"
-            className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
-          >
-            <Signal className="h-5 w-5 opacity-75" stroke="currentColor" />
-            <span className="text-sm font-medium"> Signals </span>
           </Link>
 
           <Link

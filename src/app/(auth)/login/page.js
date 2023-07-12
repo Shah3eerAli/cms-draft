@@ -1,3 +1,4 @@
+"use client";
 import LogInForm from "@/components/auth/login-form";
 
 export const metadata = {

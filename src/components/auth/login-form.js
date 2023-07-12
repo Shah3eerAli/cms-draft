@@ -4,9 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "../ui/Input";
-import { LoginFormData } from "@/lib/types";
+import { useRouter } from "next/navigation";
 
 const LogInForm = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -16,7 +17,7 @@ const LogInForm = () => {
   });
 
   const formSubmit = (data) => {
-    console.log(data);
+    router.push("/");
   };
 
   return (

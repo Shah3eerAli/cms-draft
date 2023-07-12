@@ -1,6 +1,6 @@
-import Sidebar from "@/components/general/Sidebar";
 import "@/styles/globals.css";
 import { Inconsolata } from "next/font/google";
+import Sidebar from "@/components/general/Sidebar";
 
 const inconsolata = Inconsolata({
   weight: ["400", "700"],

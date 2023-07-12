@@ -1,53 +1,38 @@
-import DashboardCard from "@/components/dashboard/DashboardCard";
-import BarChartOverview from "@/components/dashboard/BarChartOverview";
-import Card from "@/components/ui/Card";
-import Table from "@/components/ui/Table";
-import { DollarSign, Users2 } from "lucide-react";
-import PieChartOverview from "@/components/dashboard/PieChartOverview";
+"use client";
+import Button from "@/components/ui/Button";
+import NoContent from "@/components/ui/NoContent";
+import { ChevronLeft, File, Plus, User } from "lucide-react";
 
-export default function Home() {
+const Home = async () => {
+  const signals = [];
+  const addUser = () => {};
   return (
-    <main className="w-full m-8">
-      <header className="grid grid-cols-4 gap-4">
-        <DashboardCard
-          icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
-          title="Total Revenue"
-          description="+20.1% from last month"
-          amount="$45,231.89"
-        />
-        <DashboardCard
-          icon={<Users2 className="h-4 w-4 text-muted-foreground" />}
-          title="Total Subscriber"
-          description="+20.1% from last month"
-          amount="$45,231.89"
-        />
-        <DashboardCard
-          icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
-          title="Total Revenue"
-          description="+20.1% from last month"
-          amount="$45,231.89"
-        />
-        <DashboardCard
-          icon={<DollarSign className="h-4 w-4 text-muted-foreground" />}
-          title="Total Revenue"
-          description="+20.1% from last month"
-          amount="$45,231.89"
-        />
+    <main className="w-full">
+      <header className="flex items-center justify-between m-8">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Signals</h1>
+          <p>Create and manage users.</p>
+        </div>
+        {signals.length > 0 && (
+          <Button
+            text="Add User"
+            icon={<Plus className="h-4 w-4 mr-2" />}
+            onClick={addUser}
+            className="flex"
+          />
+        )}
       </header>
-
-      <section className="my-4 grid grid-cols-3 gap-4">
-        {/* <Card className='col-span-2'>
-        <h2 className='text-2xl font-bold mb-4'>
-          Overview
-        </h2>
-      <BarChartOverview />
-      </Card>
-      <Card>
-      <h2 className='text-2xl font-bold'>Recent Sales</h2>
-        <p className='mb-4'>You made 265 sales this month. </p>
-    <PieChartOverview />
-      </Card> */}
+      <section className="m-8">
+        {signals.length == 0 && (
+          <NoContent
+            type="users"
+            onClick={addUser}
+            icon={<User className="w-[5rem] h-[5rem] stroke-[1.3]" />}
+          />
+        )}
       </section>
     </main>
   );
-}
+};
+
+export default Home;

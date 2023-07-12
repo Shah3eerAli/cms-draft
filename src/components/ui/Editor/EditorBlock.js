@@ -2,14 +2,8 @@ import React, { memo, useEffect, useRef } from "react";
 import EditorJS, { OutputData } from "@editorjs/editorjs";
 import { EDITOR_JS_TOOLS } from "@/lib/constant";
 
-type Props = {
-  data?: OutputData;
-  onChange(val: OutputData): void;
-  holder: string;
-};
-
-const EditorBlock = ({ data, onChange, holder }: Props) => {
-  const ref = useRef<EditorJS>();
+const EditorBlock = ({ data, onChange, holder }) => {
+  const ref = useRef();
 
   useEffect(() => {
     if (!ref.current) {
