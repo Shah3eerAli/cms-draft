@@ -2,21 +2,21 @@
 import {
   ChevronUp,
   LineChart,
-  User2,
   Users2,
   Ban,
   Settings,
   AtSign,
   BookOpen,
   UserPlus2,
-  Signal,
 } from "lucide-react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Sidebar = () => {
+  const path = usePathname();
   return (
     <div
       style={inter.style}
@@ -30,7 +30,9 @@ const Sidebar = () => {
         <nav aria-label="Main Nav" className="mt-6 flex flex-col space-y-1">
           <Link
             href="/"
-            className="flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2  text-gray-700  active:text-gray-700"
+            className={`flex items-center gap-2 rounded-lg ${
+              path == "/" && "bg-gray-100"
+            }  px-4 py-2  text-gray-700  active:text-gray-700 hover:bg-gray-100`}
           >
             <LineChart className="h-5 w-5 opacity-75" stroke="currentColor" />
             <span className="text-sm font-medium"> Dashboard </span>
@@ -38,14 +40,21 @@ const Sidebar = () => {
 
           <Link
             href="/posts"
-            className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+            className={`flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 ${
+              path == "/posts" && "bg-gray-100"
+            } hover:bg-gray-100 hover:text-gray-700`}
           >
             <BookOpen className="h-5 w-5 opacity-75" stroke="currentColor" />
             <span className="text-sm font-medium"> Posts </span>
           </Link>
 
           <details className="group [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+            <summary
+              className={`flex cursor-pointer items-center justify-between rounded-lg px-4 py-2  
+              text-gray-500 hover:bg-gray-100 hover:text-gray-700 ${
+                path.split("/")[1] == "teams" && "bg-gray-100"
+              } `}
+            >
               <div className="flex items-center gap-2">
                 <Users2 className="h-5 w-5 opacity-75" stroke="currentColor" />
                 <span className="text-sm font-medium"> Teams </span>
@@ -62,7 +71,9 @@ const Sidebar = () => {
             <nav aria-label="Teams Nav" className="mt-2 flex flex-col px-4">
               <Link
                 href="/teams/banned-users"
-                className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 ${
+                  path == "/teams/banned-users" && "bg-gray-100"
+                } text-gray-500 hover:bg-gray-100 hover:text-gray-700`}
               >
                 <Ban className="h-5 w-5 opacity-75" stroke="currentColor" />
                 <span className="text-sm font-medium"> Banned Users </span>
@@ -70,7 +81,9 @@ const Sidebar = () => {
 
               <Link
                 href="/teams/members"
-                className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 ${
+                  path == "/teams/members" && "bg-gray-100"
+                } text-gray-500 hover:bg-gray-100 hover:text-gray-700`}
               >
                 <UserPlus2
                   className="h-5 w-5 opacity-75"
@@ -82,7 +95,11 @@ const Sidebar = () => {
           </details>
 
           <details className="group [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+            <summary
+              className={`flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 ${
+                path.split("/")[1] == "settings" && "bg-gray-100"
+              } text-gray-500 hover:bg-gray-100 hover:text-gray-700`}
+            >
               <div className="flex items-center gap-2">
                 <Settings
                   className="h-5 w-5 opacity-75"
@@ -102,7 +119,9 @@ const Sidebar = () => {
             <nav aria-label="Teams Nav" className="mt-2 flex flex-col px-4">
               <Link
                 href="/settings/smtp"
-                className="flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                className={`flex items-center gap-2 rounded-lg px-4 py-2 text-gray-500  hover:bg-gray-100 hover:text-gray-700 ${
+                  path == "/settings/smtp" && "bg-gray-100"
+                }`}
               >
                 <AtSign className="h-5 w-5 opacity-75" stroke="currentColor" />
                 <span className="text-sm font-medium"> SMTP </span>
