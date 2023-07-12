@@ -1,19 +1,11 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-interface RadioButtonProps {
-  register: any;
-  label: string;
-  name: string;
-  errors?: Record<string, any>;
-  imageUrl: string;
-}
-
-const RadioButton: React.FC<RadioButtonProps> = ({ register, label, name, errors, imageUrl }) => {
+const RadioButton = ({ register, label, name, errors, imageUrl }) => {
   return (
     <div>
       <input
         type="radio"
-        {...register('brand')}
+        {...register("brand")}
         id={name}
         value={name}
         className="peer hidden [&:checked_+_label_svg]:block"
@@ -24,11 +16,11 @@ const RadioButton: React.FC<RadioButtonProps> = ({ register, label, name, errors
       >
         <div className="flex items-center justify-between">
           <p className="text-gray-700">
-            {label}{' '}
+            {label}{" "}
             {errors?.brand?.message ? (
               <span className="text-red-500">*</span>
             ) : (
-              ''
+              ""
             )}
           </p>
           <svg
@@ -45,7 +37,12 @@ const RadioButton: React.FC<RadioButtonProps> = ({ register, label, name, errors
           </svg>
         </div>
 
-        <Image src={imageUrl} alt={label + ' Logo'} width={1000} height={1000} />
+        <Image
+          src={imageUrl}
+          alt={label + " Logo"}
+          width={1000}
+          height={1000}
+        />
       </label>
     </div>
   );

@@ -1,12 +1,4 @@
-interface DropdownProps {
-  name: string;
-  register: any;
-  options: string[];
-  label: string;
-  errors: Record<string, any>;
-}
-
-const Dropdown: React.FC<DropdownProps> = ({ name, register, options, label, errors }) => {
+const Dropdown = ({ name, register, options, label, errors }) => {
   return (
     <div className="mt-4 py-2 px-4 rounded-lg bg-gray-100">
       <label className="flex items-center">

@@ -1,13 +1,7 @@
-import React, { useMemo, FC } from 'react';
+import React, { useMemo, FC } from "react";
 
-import DataTable from 'react-data-table-component';
-import FilterComponent from './SearchFilter';
-
-interface TableProps {
-  title?: string;
-  data: Record<any, any>;
-  columns: any;
-}
+import DataTable from "react-data-table-component";
+import FilterComponent from "./SearchFilter";
 
 // const columns: any[] = [
 //   {
@@ -74,13 +68,13 @@ interface TableProps {
 //   },
 // ];
 
-const Table: FC<TableProps> = ({ data, columns, title }) => {
-  const [filterText, setFilterText] = React.useState('');
+const Table = ({ data, columns, title }) => {
+  const [filterText, setFilterText] = React.useState("");
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false);
 
   const filteredItems = data?.filter(
-    (item: any) =>
+    (item) =>
       JSON.stringify(item).toLowerCase().indexOf(filterText.toLowerCase()) !==
       -1
   );
@@ -89,7 +83,7 @@ const Table: FC<TableProps> = ({ data, columns, title }) => {
     const handleClear = () => {
       if (filterText) {
         setResetPaginationToggle(!resetPaginationToggle);
-        setFilterText('');
+        setFilterText("");
       }
     };
 
@@ -107,7 +101,7 @@ const Table: FC<TableProps> = ({ data, columns, title }) => {
       title={title}
       columns={columns}
       data={filteredItems}
-      defaultSortFieldId='name'
+      defaultSortFieldId="name"
       striped
       pagination
       subHeader

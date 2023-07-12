@@ -1,20 +1,13 @@
-interface InputProps {
-  register: any;
-  label: string;
-  placeholder: string;
-  name: string;
-  type?: string;
-  errors?: Record<string, any>;
-}
-
-const Input: React.FC<InputProps> = ({ register, label, placeholder, name, type, errors }) => {
+const Input = ({ register, label, placeholder, name, type, errors }) => {
   return (
     <div className="mt-4 py-2 px-4 rounded-lg bg-gray-100">
       <label htmlFor={name} className="flex items-center text-sm">
         {label}
-        {(errors && errors[name]?.message) && <span className="ml-2 text-red-500 text-xs">
-          *
-        </span>}
+        {errors && errors[name]?.message && (
+          <span className="ml-2 text-red-500 text-xs">
+            {errors[name]?.message}
+          </span>
+        )}
       </label>
       <input
         id={name}
